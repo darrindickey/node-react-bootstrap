@@ -11,7 +11,8 @@ export default class Navbar extends React.Component {
 			<div class="bb-navbar-content">
 				<div class="bb-navbar__logo" onClick={ () => this.navigate('/') }>
 					<span class="bb-navbar__logo-text bb-navbar__logo-text--main">Node</span>
-					<span class="bb-navbar__logo-text">Test</span>
+					{' '}
+					<span class="bb-navbar__logo-text">React</span>
 				</div>
 
 				<div class="bb-navbar__actions">
