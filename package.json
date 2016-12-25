@@ -1,7 +1,11 @@
 {
   "name": "node-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node & React-Redux Boilerplate",
+  "repository" : { 
+    "type" : "git", 
+    "url" : "https://github.com/homanbromand/node-react-bootstrap.git"
+  },
   "main": "index.js",
   "scripts": {
     "start": "DEBUG_FD=3 DEBUG=PROD node ./server 3> ./server/production.log",
