@@ -1,0 +1,6 @@
+
+<ul>
+	{{#tweets}}
+		<li>{{.}}</li>
+	{{/tweets}}
+</ul>

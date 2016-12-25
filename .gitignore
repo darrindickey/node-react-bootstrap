@@ -1,0 +1,14 @@
+# Folders #
+node_modules/
+
+# Files #
+public/bundle.js
+public/style.css
+
+# Extentions #
+*.log
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*

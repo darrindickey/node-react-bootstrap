@@ -1,0 +1,101 @@
+body {
+	background-color: #eee;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+.bb-page {
+	display: flex;
+	flex-direction: row;
+	min-height: 100vh;
+}
+
+.bb-sidebar {
+	flex: 0 0 260px;
+	border-right: 2px solid green; 
+}
+
+.bb-sidebar-content {
+	position: fixed;
+}
+
+.bb-main {
+	flex: 1 1 auto;
+
+	display: flex;
+	flex-direction: column;
+}
+	
+.bb-navbar {
+	flex: 0 0 48px;
+}
+
+.bb-navbar-content {
+	display: flex;
+	padding: 16px;
+}
+
+.bb-navbar__logo {
+	flex: 1 1 auto;
+}
+
+.bb-navbar__logo-text {
+	font-size: $font-size-large;
+	cursor: pointer;
+
+	&--main {
+		color: red;
+	}
+}
+
+.bb-navbar__actions {
+	display: flex;
+}
+
+.bb-navbar__actions-button {
+	margin-left: 8px;	
+}
+
+.bb-content {
+	background-color: white;
+	flex: 1 1 auto;
+}
+
+.bb-footer {
+	flex: 0 0 140px;
+}
+
+.bb-h1 {
+	font-size: $font-size-xlarge;
+    font-weight: normal;
+    color: olivedrab;
+    margin-left: 16px;
+}
+
+.bb-button {
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: $font-size-smal;
+    line-height: 18px;
+
+    color: white;
+    background-color: #4CAF50;
+
+    &--green {
+    	color: white;
+    	background-color: #4CAF50; 	
+    }
+
+    &--blue {
+		background-color: blue; 	
+    }
+
+    &--red {
+		background-color: red; 	
+    }
+}

@@ -1,0 +1,38 @@
+
+.bb-todo {
+
+}
+
+.bb-todo-filter {
+
+}
+
+.bb-todo-create {
+
+}
+
+.bb-todo-list {
+	border-top: 1px solid #ccc;
+
+	&--done {
+
+	}
+} 
+
+.bb-todo-delete {
+	text-align: right;
+}
+
+.bb-todo-item {
+	padding: 20px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #eee;
+	}
+	
+	&--done {
+		text-decoration: line-through;
+		color: red;
+	}
+}

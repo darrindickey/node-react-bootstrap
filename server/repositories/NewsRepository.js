@@ -1,0 +1,1 @@
+NewsRepository.js
