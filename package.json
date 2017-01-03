@@ -2,24 +2,26 @@
   "name": "node-test",
   "version": "1.0.0",
   "description": "Node & React-Redux Boilerplate",
-  "repository" : { 
-    "type" : "git", 
-    "url" : "https://github.com/homanbromand/node-react-bootstrap.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homanbromand/node-react-bootstrap.git"
   },
   "main": "index.js",
   "scripts": {
     "start": "DEBUG_FD=3 DEBUG=PROD node ./server 3> ./server/production.log",
     "dev": "DEBUG=DEV,PROD nodemon",
-
     "build:dev": "NODE_ENV=development webpack --colors --config webpack.config.js",
     "build:prod": "NODE_ENV=production webpack --colors --config webpack.config.js",
-    
     "db:rollback": "knex migrate:rollback --knexfile server/knexfile.js",
     "db:migrate": "knex migrate:latest --knexfile server/knexfile.js",
     "db:seed": "knex seed:run --knexfile server/knexfile.js",
     "db:boot": "npm run db:rollback && npm run db:migrate && npm run db:seed"
   },
-  "keywords": ["node", "react", "boilerplate"],
+  "keywords": [
+    "node",
+    "react",
+    "boilerplate"
+  ],
   "author": "Homan Bromand",
   "license": "MIT",
   "dependencies": {
@@ -41,12 +43,15 @@
     "css-loader": "^0.26.1",
     "debug": "^2.3.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "history": "^4.5.0",
     "hjs": "0.0.6",
     "knex": "^0.12.6",
     "lodash": "^4.17.2",
     "mysql": "^2.12.0",
     "node-sass": "^3.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",

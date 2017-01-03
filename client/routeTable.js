@@ -35,6 +35,22 @@ export default {
 			component: Signup 
 		},
 		{ 
+			path: 'change', 
+			component: About 
+		},
+		{ 
+			path: 'forgot', 
+			component: About 
+		},
+		{ 
+			path: 'reset', 
+			component: About 
+		},
+		{ 
+			path: 'chatt', 
+			component: About 
+		},
+		{ 
 			path: 'news', 
 			component: NewsList, 
 			childRoutes: [

@@ -1,4 +1,4 @@
-require('./main.scss') // Load all the css
+require('./main.scss') // Load all style, will be extracted by webpack
 
 import React from 'react'
 import ReactDOM from 'react-dom'

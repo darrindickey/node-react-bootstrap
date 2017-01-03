@@ -6,5 +6,7 @@
 // docker rm node-mysql
 // docker ps 
 
+// docker run -d --name node-redis -p 6379:6379 redis
+
 require('babel-register')
 require('./server')
