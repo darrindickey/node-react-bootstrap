@@ -1,23 +1,24 @@
 import React from 'react'
-import { fetchAllTodos, deleteCompletedTodos } from '../../actions/todoActions'
 import { connect } from 'react-redux'
 
-import FilterTodo from './FilterTodo'
-import CreateTodo from './CreateTodo'
-import Todo from './Todo'
+import { fetchAll, deleteCompleted } from '../actions/todoActions'
+
+import FilterTodo from '../components/TodoFilterForm'
+import CreateTodo from '../components/TodoCreateForm'
+import Todo from '../components/Todo'
 
 @connect((store) => {
 	return {
-		todos: store.todos.items,
-		showCompleted: store.todos.showCompleted,
-		query: store.todos.query
+		todos: store.todo.items,
+		showCompleted: store.todo.showCompleted,
+		query: store.todo.query
 	}
 })
 
-export default class TodoPage extends React.Component {
+export default class TodoList extends React.Component {
 	
 	componentWillMount() {
-		fetchAllTodos()
+		fetchAll()
 	}
 
 	getFilteredTodos(completed = false) {
@@ -55,7 +56,7 @@ export default class TodoPage extends React.Component {
 		const { showCompletedOnly, query } = this.props;
 
 		return (
-			<div>
+			<div class="bb-page bb-page-todo-list">
 				<h1 class="bb-h1">Todos</h1>
 				<FilterTodo showCompleted={this.showCompleted} query={this.query} />
 				<CreateTodo />
@@ -67,7 +68,7 @@ export default class TodoPage extends React.Component {
 
 				{ doneTodos.length > 0 &&
 					<div class="bb-todo-delete">
-						<button class="bb-button bb-button--red" onClick={ deleteCompletedTodos }>Delete completed</button>
+						<button class="bb-button bb-button--red" onClick={ deleteCompleted }>Delete completed</button>
 					</div>
 				}
 			</div>

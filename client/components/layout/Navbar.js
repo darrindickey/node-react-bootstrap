@@ -16,12 +16,13 @@ export default class Navbar extends React.Component {
 				</div>
 
 				<div class="bb-navbar__actions">
-					<button class="bb-navbar__actions-button bb-button bb-button--green" onClick={ () => this.navigate('/login') }>
-						Login
-					</button>
-					<button class="bb-navbar__actions-button bb-button bb-button--green" onClick={ () => this.navigate('/signup') }>
-						Signup
-					</button>
+
+					<button class="bb-navbar__actions-button bb-button bb-button--green" 
+						onClick={ () => this.navigate('/login') }>Login</button>
+
+					<button class="bb-navbar__actions-button bb-button bb-button--green" 
+						onClick={ () => this.navigate('/signup') }>Signup</button>
+						
 				</div>
 			</div>
 		);

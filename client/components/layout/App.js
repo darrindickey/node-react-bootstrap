@@ -8,7 +8,7 @@ export default class App extends React.Component {
 	
 	render() {
 		return (
-			<div class="bb-page">
+			<div class="bb-app-wrapper">
 				<div class="bb-sidebar">
 					<Sidebar />
 				</div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { updateSearchQuery, updateDoneFilter } from '../../actions/todoActions'
+import { updateSearchQuery, updateDoneFilter } from '../actions/todoActions'
 
 export default class FilterTodo extends React.Component {
 

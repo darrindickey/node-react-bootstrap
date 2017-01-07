@@ -1,5 +1,5 @@
 import React from 'react'
-import { createTodo } from '../../actions/todoActions'
+import { create } from '../actions/todoActions'
 
 export default class CreateTodo extends React.Component {
 
@@ -13,7 +13,7 @@ export default class CreateTodo extends React.Component {
 		const text = this.createTodoInput.value
 
 		if (text) {
-			createTodo(text)	
+			create({text})	
 			this.createTodoInput.value = ''
 		}
 	}

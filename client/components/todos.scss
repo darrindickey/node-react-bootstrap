@@ -1,22 +1,13 @@
 
-.bb-todo {
 
-}
-
-.bb-todo-filter {
-
-}
-
-.bb-todo-create {
-
-}
 
 .bb-todo-list {
 	border-top: 1px solid #ccc;
 
 	&--done {
-
+		color: red;
 	}
+
 } 
 
 .bb-todo-delete {

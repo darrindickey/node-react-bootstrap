@@ -1,0 +1,12 @@
+@mixin button-bg($bgColor) {
+	background-color: $bgColor;
+	transition: background-color 0.2s ease;
+
+ 	&:hover {
+		background-color: lighten($bgColor, 8%);
+	}
+	
+	&:active {
+		background-color: darken($bgColor, 15%);
+	}
+}

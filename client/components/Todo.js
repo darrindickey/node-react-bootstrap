@@ -1,5 +1,5 @@
 import React from 'react'
-import { updateTodo, deleteTodo } from '../../actions/todoActions'
+import { update, destroy } from '../actions/todoActions'
 
 export default class TodoItem extends React.Component {
 	
@@ -7,7 +7,7 @@ export default class TodoItem extends React.Component {
 		const { todo } = this.props
 		const updatedTodo = {...todo, is_completed: !Boolean(todo.is_completed)}
 		
-		updateTodo(updatedTodo)
+		update(updatedTodo)
 	}
 
 	render() {

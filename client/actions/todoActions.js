@@ -1,40 +1,40 @@
 import axios from 'axios'
 import store from '../store'
-import * as TODO from '../constants/todoActionTypes'
+import { TODO } from '../constants/actionKeys'
 
 const baseUrl = '/api/todos'
 
-function fetchAllTodos() {
+function fetchAll() {
 	store.dispatch({
-		type: TODO.FETCH_TODOS_PREFIX,
+		type: TODO.API_FETCH_ALL,
 		payload: axios.get(baseUrl)
 	});
 }
 
-function createTodo(text) {
+function create(fields) {
 	store.dispatch({
-		type: TODO.CREATE_TODO_PREFIX,
-		payload: axios.post(baseUrl, {text})
+		type: TODO.API_CREATE,
+		payload: axios.post(baseUrl, fields)
 	});
 }
 
-function updateTodo(todo) {
+function update(todo) {
 	store.dispatch({
-		type: TODO.UPDATE_TODO_PREFIX,
+		type: TODO.API_UPDATE,
 		payload: axios.put(`${baseUrl}/${todo.id}`, todo)
 	});
 }
 
-function deleteTodo(todo) {
+function destroy(id) {
 	store.dispatch({
-		type: TODO.DELETE_TODO_PREFIX,
-		payload: axios.delete(`${baseUrl}/${todo.id}`)
+		type: TODO.API_DELETE,
+		payload: axios.delete(`${baseUrl}/${id}`)
 	});
 }
 
-function deleteCompletedTodos() {
+function deleteCompleted() {
 	store.dispatch({
-		type: TODO.DELETE_COMPLETED_TODOS_PREFIX,
+		type: TODO.API_DELETE_COMPLETED,
 		payload: axios.delete(`${baseUrl}/completed`)
 	});
 }
@@ -54,11 +54,11 @@ function updateDoneFilter(showCompleted) {
 }
 
 export {
-	fetchAllTodos,
-	createTodo,
-	updateTodo,
-	deleteTodo,
-	deleteCompletedTodos,
+	fetchAll,
+	create,
+	update,
+	destroy,
+	deleteCompleted,
 	updateSearchQuery,
 	updateDoneFilter
 }

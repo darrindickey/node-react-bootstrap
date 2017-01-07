@@ -1,13 +1,17 @@
 import { combineReducers } from 'redux'
 
-import user from './userReducer'
-import todos from './todosReducer'
 import news from './newsReducer'
+import password from './passwordReducer'
+import session from './sessionReducer'
+import todo from './todoReducer'
+import user from './userReducer'
 
 const reducers = combineReducers({
+	news,
+	password,
+	session,
 	user,
-	todos,
-	news
+	todo
 })
 
 export default reducers

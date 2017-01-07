@@ -6,7 +6,7 @@ body {
 	padding: 0;
 }
 
-.bb-page {
+.bb-app-wrapper {
 	display: flex;
 	flex-direction: row;
 	min-height: 100vh;
@@ -26,22 +26,27 @@ body {
 	list-style-type: none;
 	padding: 0;
 	margin: 16px 0;
+}
 
-	li {
-		border-left: 3px solid transparent;
+.bb-sidebar-list__link {
+	display: inline-block;
+	text-decoration: none;
+	line-height: 32px;
+	text-indent: 16px;
+	font-size: $font-size-smal;
+	color: #666;
+	width: 100%;
 
-		&:hover {
-			cursor: pointer;
-			border-left: 3px solid green;
-		}
+	border-left: 3px solid transparent;
+	box-sizing: border-box;
 
-		a {
-			display: inline-block;
-			padding: 8px;
-			color: #666;
-			text-decoration: none;
-			width: 100%;
-		}
+	&:hover {
+		cursor: pointer;
+		background-color: whitesmoke; 
+	}
+
+	&--active {
+		border-left: 3px solid green;
 	}
 }
 
@@ -99,27 +104,31 @@ body {
 }
 
 .bb-button {
-    border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: $font-size-smal;
-    line-height: 18px;
+	border: none;
+	border-radius: 2px;
+	padding: 8px 16px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: $font-size-smal;
+	line-height: 18px;
 
-    color: white;
-    background-color: #4CAF50;
+	color: white;
+	background-color: #4CAF50;
 
-    &--green {
-    	color: white;
-    	background-color: #4CAF50; 	
-    }
+	&--green {
+		color: white;
+		@include button-bg(#4CAF50);
+	}
 
-    &--blue {
-		background-color: blue; 	
-    }
+	&--blue {
+		@include button-bg(blue);
+	}
 
-    &--red {
-		background-color: red; 	
-    }
+	&--red {
+		@include button-bg(red);
+	}
+
+	&:focus {
+		outline: none;
+	}
 }

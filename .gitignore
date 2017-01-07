@@ -5,6 +5,8 @@ node_modules/
 public/bundle.js
 public/style.css
 
+server/env.js
+
 # Extentions #
 *.log
 

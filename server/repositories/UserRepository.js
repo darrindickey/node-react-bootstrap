@@ -25,7 +25,11 @@ class UserRepository {
 	}
 
 	logout() {
+		return Promise.resolve(null);
+	}
 
+	signup(fields) {
+		return Promise.resolve(null);
 	}
 
 	resetPassword() {

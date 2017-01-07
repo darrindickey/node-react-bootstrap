@@ -6,6 +6,5 @@
 		"webpack.config.js"
     ],
     "ext": "js scss",
-    "foo": {"exec": "npm run build:dev && node server/index.js"},
-    "exec": "node server/index.js"
+    "exec": "npm run build:dev && node server/index.js"
 }
