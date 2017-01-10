@@ -58,33 +58,45 @@ body {
 }
 	
 .bb-navbar {
-	flex: 0 0 48px;
+	flex: 0 0 40px;
 }
 
 .bb-navbar-content {
 	display: flex;
-	padding: 16px;
+	padding: 0 16px;
 }
 
 .bb-navbar__logo {
+	line-height: 40px;
+
 	flex: 1 1 auto;
+
+	h1 {
+		cursor: pointer;
+		font-size: $font-size-xlarge;
+	}
 }
 
-.bb-navbar__logo-text {
-	font-size: $font-size-large;
-	cursor: pointer;
-
-	&--main {
-		color: red;
-	}
+.bb-navbar__logo-react {
+	color: red;
 }
 
 .bb-navbar__actions {
 	display: flex;
+	padding-top: 20px;
+
+	div {
+		margin-left: 8px;
+
+		button {
+			vertical-align: middle;
+  			display: block;
+		}
+	}
 }
 
 .bb-navbar__actions-button {
-	margin-left: 8px;	
+		
 }
 
 .bb-content {
@@ -132,3 +144,37 @@ body {
 		outline: none;
 	}
 }
+
+.bb-form-container {
+	padding: 16px 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	max-width: 400px;
+	margin: 40px auto;
+}
+
+.bb-form {
+	display: flex;
+	flex-direction: column;
+
+	.bb-button--submit {
+		margin-top: 8px;
+	}
+}
+
+.bb-input {
+	
+	&--text {
+		font-size: $font-size-smal;
+		padding: 8px;
+		margin-bottom: 16px;
+	}
+
+	&--password	{
+		font-size: $font-size-smal;
+		padding: 8px;
+		margin-bottom: 16px;
+	}
+}
+
+

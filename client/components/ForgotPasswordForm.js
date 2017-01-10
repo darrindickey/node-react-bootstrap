@@ -25,11 +25,11 @@ export default class ForgotPassword extends React.Component {
 			<div class="bb-form-container bb-forgot-password">
 				<form onSubmit={this.submitHandler} class="bb-form">
 					<input 
-						class="bb-input" 
+						class="bb-input bb-input--text" 
 						placeholder="email"
 						ref={(input) => this.emailInput = input} />
 
-					<button type="submit" class="bb-button bb-button--green">Send</button>
+					<button type="submit" class="bb-button bb-button--green bb-button--submit">Send</button>
 				</form>
 			</div>
 		)

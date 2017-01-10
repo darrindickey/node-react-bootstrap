@@ -11,16 +11,16 @@ const TodoController = express.Router()
 })
 
 .post('/', (req, res, next) => {
-	todoRepo.create(req.body).then((tweet) => {
-		res.send(tweet)
+	todoRepo.create(req.body).then((todo) => {
+		res.send(todo)
 	}, next)
 })
 
 .put('/:id', (req, res, next) => {
 	const id = req.params.id
 	
-	todoRepo.update(id, req.body).then((tweet) => {
-		res.send(tweet)
+	todoRepo.update(id, req.body).then((todo) => {
+		res.send(todo)
 	}, next)
 })
 

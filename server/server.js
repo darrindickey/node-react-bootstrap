@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import favicon from 'serve-favicon'
 import session from 'express-session'
+import connectRedis from 'connect-redis'
 import passport from './passport'
 import { dd } from './logger'
 import { PATHS, APP_KEY } from './constants'
@@ -14,6 +15,8 @@ import DefaultController from './controllers/DefaultController'
 
 const PORT = 3000
 
+const RedisStore = connectRedis(session)
+
 express()
 	.set('views', PATHS.VIEWS)
 	.set('view engine', 'hjs')
@@ -23,6 +26,10 @@ express()
 	.use(bodyParser.urlencoded({extended: false}))
 
 	.use(session({
+		store: new RedisStore({
+			host: '127.0.0.1',
+			port: 6379
+		}),
 		secret: APP_KEY,
 		resave: false,
 		saveUninitialized: false,
@@ -30,6 +37,15 @@ express()
 	}))
 	.use(passport.initialize())
 	.use(passport.session())
+
+
+	.get('/info', (req, res) => {
+		res.send({
+			session: req.session,
+			isAuthenticated: req.isAuthenticated(),
+		})
+	})
+
 
 	.use('/api/users', UserController)
 	.use('/api/sessions', SessionController)

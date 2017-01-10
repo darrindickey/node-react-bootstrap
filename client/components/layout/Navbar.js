@@ -1,4 +1,5 @@
 import React from 'react';
+import { logout } from '../../actions/sessionActions'
 
 export default class Navbar extends React.Component {
 	
@@ -10,19 +11,21 @@ export default class Navbar extends React.Component {
 		return (
 			<div class="bb-navbar-content">
 				<div class="bb-navbar__logo" onClick={ () => this.navigate('/') }>
-					<span class="bb-navbar__logo-text bb-navbar__logo-text--main">Node</span>
-					{' '}
-					<span class="bb-navbar__logo-text">React</span>
+					<h1>Node <span class="bb-navbar__logo-react">React</span></h1>
 				</div>
 
 				<div class="bb-navbar__actions">
+					<div>
+						<button class="bb-button bb-button--red" onClick={ logout }>Logout</button>	
+					</div>
+					
+					<div>
+						<button class="bb-button bb-button--green" onClick={ () => this.navigate('/login') }>Login</button>
+					</div>
 
-					<button class="bb-navbar__actions-button bb-button bb-button--green" 
-						onClick={ () => this.navigate('/login') }>Login</button>
-
-					<button class="bb-navbar__actions-button bb-button bb-button--green" 
-						onClick={ () => this.navigate('/signup') }>Signup</button>
-						
+					<div>
+						<button class="bb-button bb-button--green" onClick={ () => this.navigate('/signup') }>Signup</button>
+					</div>	
 				</div>
 			</div>
 		);

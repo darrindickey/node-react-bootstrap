@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt-nodejs'
 import { dd } from '../logger'
 import db from '../db'
 import User from '../models/User'
+import Login from '../models/Login'
 
 const TABLE = 'users';
 
@@ -11,25 +12,28 @@ class UserRepository {
 		this.error = this.error.bind(this)
 	}
 
-	login(email, password) {
-		return User.where({email}).first().then((user) => {
-			if (bcrypt.compareSync(password, user.password)) {
-				this.registerSuccessfulLogin(user)
-				return Promise.resolve(user);
+	login({ email, password }) {
+		return User.where({email}).fetch().then((user) => {
+			if (! user) {
+				return Promise.resolve(null)	
 			}
 
-			return Promise.resolve(null);
-		}, (err) => {
+			if (bcrypt.compareSync(password, user.get('password'))) {
+				return Promise.resolve(user);
+			}
+			return Promise.resolve(null)
+		}, (err) => {
 			return Promise.reject(err)
 		})
 	}
 
-	logout() {
-		return Promise.resolve(null);
-	}
-
-	signup(fields) {
-		return Promise.resolve(null);
+	signup({ email, firstName, lastName, password }) {
+		return new User({
+			email, 
+			first_name: firstName, 
+			last_name: lastName, 
+			password: bcrypt.hashSync(password)
+		}).save()
 	}
 
 	resetPassword() {
@@ -45,11 +49,15 @@ class UserRepository {
 	}
 
 	getById(id) {
-		return db(TABLE).where('id', id).first();
+		return User.where({id}).fetch()
 	}
 
-	registerSuccessfulLogin(user) {
-		dd(`UserRepository::registerSuccessfulLogin - User ${user.email} loged in successfully, add entry to logins table`)
+	registerSuccessfulLogin({ user, ip }) {
+		new Login({ 
+			user_id: user.get('id'), 
+			created_at: new Date(),
+			ip
+		}).save()
 	}
 
 	error(err) {

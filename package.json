@@ -9,9 +9,15 @@
   "main": "index.js",
   "scripts": {
     "start": "DEBUG_FD=3 DEBUG=PROD node ./server 3> ./server/production.log",
-    "dev": "DEBUG=DEV,PROD nodemon",
+    
+    "sym:remove": "", 
+    "sym:add": "",
+    
+    "dev": "npm run sym:remove && npm run sym:add && DEBUG=DEV,PROD nodemon",
+
     "build:dev": "NODE_ENV=development webpack --colors --config webpack.config.js",
     "build:prod": "NODE_ENV=production webpack --colors --config webpack.config.js",
+    
     "db:rollback": "knex migrate:rollback --knexfile server/knexfile.js",
     "db:migrate": "knex migrate:latest --knexfile server/knexfile.js",
     "db:seed": "knex seed:run --knexfile server/knexfile.js",
@@ -40,6 +46,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
+    "connect-redis": "^3.2.0",
     "css-loader": "^0.26.1",
     "debug": "^2.3.3",
     "express": "^4.14.0",
@@ -56,6 +63,7 @@
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
+    "redis": "^2.6.3",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
     "redux-promise-middleware": "^4.2.0",

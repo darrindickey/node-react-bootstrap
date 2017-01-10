@@ -38,7 +38,7 @@ export default class ChangePassword extends React.Component {
 						type="password"
 						ref={(input) => this.newPasswordInput = input} />
 
-					<button type="submit" class="bb-button bb-button--green">Save</button>
+					<button type="submit" class="bb-button bb-button--green bb-button--submit">Save</button>
 				</form>
 			</div>
 		)

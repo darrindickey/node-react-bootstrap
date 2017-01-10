@@ -22,7 +22,7 @@ export default class CreateTodo extends React.Component {
 		return (
 			<form onSubmit={this.handleCreateTodo} class="bb-todo-create">
 				<input 
-					class="bb-todo-create__input" 
+					class="bb-input bb-input--text" 
 					placeholder="create .."
 					ref={(input) => this.createTodoInput = input} />
 

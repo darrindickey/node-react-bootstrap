@@ -28,17 +28,17 @@ export default class Signup extends React.Component {
 			<div class="bb-form-container bb-signup">
 				<form onSubmit={this.handleSignup} class="bb-form">
 					<input 
-						class="bb-input" 
+						class="bb-input bb-input--text" 
 						placeholder="first name"
 						ref={(input) => this.firstNameInput = input} />
 
 					<input 
-						class="bb-input" 
+						class="bb-input bb-input--text" 
 						placeholder="last name"
 						ref={(input) => this.lastNameInput = input} />
 
 					<input 
-						class="bb-input" 
+						class="bb-input bb-input--text" 
 						placeholder="email"
 						ref={(input) => this.emailInput = input} />
 
@@ -48,7 +48,7 @@ export default class Signup extends React.Component {
 						placeholder="password"
 						ref={(input) => this.passwordInput = input} />
 
-					<button type="submit" class="bb-button bb-button--green">Create Account</button>
+					<button type="submit" class="bb-button bb-button--green bb-button--submit">Create Account</button>
 				</form>
 			</div>
 		)

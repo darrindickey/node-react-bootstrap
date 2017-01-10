@@ -1,0 +1,10 @@
+{
+	"verbose": true,
+	"watch": [
+		"server",
+		"client",
+		"webpack.config.js"
+	],
+	"ext": "js scss",
+	"exec": "npm run build:dev && node server/index.js"
+}

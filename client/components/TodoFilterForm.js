@@ -9,7 +9,7 @@ export default class FilterTodo extends React.Component {
 		return (
 			<div class="bb-todo-filter">
 				<input 
-					class="bb-todo-filter__query-input" 
+					class="bb-input bb-input--text" 
 					placeholder="Search .."
 					value={query} 
 					ref={(input) => this.queryInput = input}

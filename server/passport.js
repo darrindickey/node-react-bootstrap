@@ -2,10 +2,10 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import userRepo from './repositories/UserRepository'
 
-passport.use(new LocalStrategy(authenticate))
+passport.use(new LocalStrategy({ usernameField: 'email' }, authenticate))
 
 function authenticate(email, password, done) {
-	userRepo.login(email, password).then((user) => {
+	userRepo.login({email, password}).then((user) => {
 		if (user) {
 			done(null, user)
 		}
@@ -16,7 +16,7 @@ function authenticate(email, password, done) {
 }
 
 passport.serializeUser((user, done) => {
-	done(null, user.id)
+	done(null, user.get('id'))
 })
 
 passport.deserializeUser((id, done) => {

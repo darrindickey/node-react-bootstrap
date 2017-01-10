@@ -4,10 +4,10 @@ import { SESSION } from '../constants/actionKeys'
 
 const baseUrl = '/api/sessions'
 
-function login(email, password) {
+function login(fields) {
 	store.dispatch({
 		type: SESSION.API_CREATE,
-		payload: axios.post(baseUrl, {email, password})
+		payload: axios.post(baseUrl, fields)
 	});
 }
 

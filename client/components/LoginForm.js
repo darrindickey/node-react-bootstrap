@@ -26,7 +26,7 @@ export default class Login extends React.Component {
 			<div class="bb-form-container bb-login">
 				<form onSubmit={this.handleLogin} class="bb-form">
 					<input 
-						class="bb-input" 
+						class="bb-input bb-input--text" 
 						placeholder="email"
 						ref={(input) => this.emailInput = input} />
 
@@ -36,7 +36,7 @@ export default class Login extends React.Component {
 						type="password"
 						ref={(input) => this.passwordInput = input} />
 
-					<button type="submit" class="bb-button bb-button--green">Sign in</button>
+					<button type="submit" class="bb-button bb-button--green bb-button--submit">Sign in</button>
 				</form>
 			</div>
 		)

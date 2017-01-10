@@ -31,7 +31,7 @@ export default class ResetPassword extends React.Component {
 						type="password"
 						ref={(input) => this.passwordInput = input} />
 
-					<button type="submit" class="bb-button bb-button--green">Save</button>
+					<button type="submit" class="bb-button bb-button--green bb-button--submit">Save</button>
 				</form>
 			</div>
 		)
