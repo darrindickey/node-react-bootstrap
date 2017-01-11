@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '../store'
-import { NEWS } from '../constants/actionKeys'
+import store from 'client/store'
+import { NEWS } from 'client/constants/actionKeys'
 
 const baseUrl = '/api/news'
 

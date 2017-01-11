@@ -9,15 +9,14 @@
   "main": "index.js",
   "scripts": {
     "start": "DEBUG_FD=3 DEBUG=PROD node ./server 3> ./server/production.log",
-    
-    "sym:remove": "", 
-    "sym:add": "",
-    
-    "dev": "npm run sym:remove && npm run sym:add && DEBUG=DEV,PROD nodemon",
-
+    "sym:client": "(cd node_modules && ln -sf ../client client)",
+    "sym:server": "(cd node_modules && ln -sf ../server server)",
+    "sym:common": "(cd node_modules && ln -sf ../common common)",
+    "sym:all": "npm run sym:client && npm run sym:server && npm run sym:common",
+    "pre-dev": "npm run sym:all",
+    "dev": "DEBUG=DEV,PROD nodemon",
     "build:dev": "NODE_ENV=development webpack --colors --config webpack.config.js",
     "build:prod": "NODE_ENV=production webpack --colors --config webpack.config.js",
-    
     "db:rollback": "knex migrate:rollback --knexfile server/knexfile.js",
     "db:migrate": "knex migrate:latest --knexfile server/knexfile.js",
     "db:seed": "knex seed:run --knexfile server/knexfile.js",
@@ -44,6 +43,7 @@
     "babel-register": "^6.18.0",
     "babili": "^0.0.9",
     "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
     "connect-redis": "^3.2.0",
@@ -58,6 +58,7 @@
     "mysql": "^2.12.0",
     "node-sass": "^3.13.0",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

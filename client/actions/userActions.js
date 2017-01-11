@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '../store'
-import { USER } from '../constants/actionKeys'
+import store from 'client/store'
+import { USER } from 'client/constants/actionKeys'
 
 const baseUrl = '/api/users'
 

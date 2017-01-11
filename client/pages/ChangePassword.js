@@ -1,5 +1,5 @@
 import React from 'react'
-import ChangePasswordForm from '../components/ChangePasswordForm'
+import ChangePasswordForm from 'client/components/ChangePasswordForm'
 
 export default class ChangePassword extends React.Component {
 

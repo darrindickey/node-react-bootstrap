@@ -1,5 +1,5 @@
 import React from 'react'
-import { change } from '../actions/passwordActions'
+import { change } from 'client/actions/passwordActions'
 
 export default class ChangePassword extends React.Component {
 

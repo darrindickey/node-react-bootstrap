@@ -2,8 +2,7 @@ import Validator from 'validatorjs'
 
 export default function validator(data) {
 	const rules = {
-		email: 'required|email',
-		password: 'required|min:6'
+		email: 'required|email'
 	}
  
 	return new Validator(data, rules);

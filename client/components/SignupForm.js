@@ -1,5 +1,5 @@
 import React from 'react'
-import { signup } from '../actions/sessionActions'
+import { signup } from 'client/actions/sessionActions'
 
 export default class Signup extends React.Component {
 

@@ -1,4 +1,5 @@
-import Bookshelf from '../bookshelf'
+import Bookshelf from 'server/resources/bookshelf'
+
 import Todo from './Todo'
 import News from './News'
 import Login from './Login'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { update, destroy } from '../actions/todoActions'
+import { update, destroy } from 'client/actions/todoActions'
 
 export default class TodoItem extends React.Component {
 	

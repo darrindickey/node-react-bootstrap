@@ -16,7 +16,19 @@ const mail = {
 	encryption: 'your-encryption',
 }
 
+const redis = {
+	host: '127.0.0.1',
+	port: 6379
+}
+
+const facebook = {
+	FACEBOOK_APP_ID: '',
+	FACEBOOK_APP_SECRET: '',
+	FACEBOOK_APP_REDIRECT: ''
+}
+
 export {
 	mysql,
-	mail
+	mail,
+	redis
 }

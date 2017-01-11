@@ -1,4 +1,4 @@
-import { NEWS } from '../constants/actionKeys'
+import { NEWS } from 'client/constants/actionKeys'
 
 const handlers = {
 	[`${NEWS.API_FETCH_ALL}_FULFILLED`]: apiFetchAllHandler,

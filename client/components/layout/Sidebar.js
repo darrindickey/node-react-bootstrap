@@ -26,11 +26,6 @@ export default class Sidebar extends React.Component {
 							activeClassName="bb-sidebar-list__link--active">Change password</Link>
 					</li>
 					<li>
-						<Link to="/forgot" 
-							class="bb-sidebar-list__link" 
-							activeClassName="bb-sidebar-list__link--active">Forgot password</Link>
-					</li>
-					<li>
 						<Link to="/reset" 
 							class="bb-sidebar-list__link" 
 							activeClassName="bb-sidebar-list__link--active">Reset password</Link>

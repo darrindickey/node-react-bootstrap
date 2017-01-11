@@ -1,4 +1,5 @@
-import Bookshelf from '../bookshelf'
+import Bookshelf from 'server/resources/bookshelf'
+
 import User from './User'
 
 class Login extends Bookshelf.Model {

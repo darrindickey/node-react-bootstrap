@@ -1,7 +1,9 @@
-import { dd } from '../logger'
-import db from '../db'
-import Todo from '../models/Todo'
-import User from '../models/User'
+import { dd } from 'server/resources/logger'
+import db from 'server/resources/db'
+
+import Todo from 'server/models/Todo'
+import User from 'server/models/User'
+
 
 const TABLE = 'todos';
 

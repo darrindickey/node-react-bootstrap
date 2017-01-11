@@ -1,4 +1,4 @@
-import { TODO } from '../constants/actionKeys'
+import { TODO } from 'client/constants/actionKeys'
 
 const handlers = {
 	[`${TODO.API_FETCH_ALL}_FULFILLED`]: apiFetchAllHandler,

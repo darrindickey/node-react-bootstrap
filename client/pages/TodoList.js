@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchAll, deleteCompleted } from '../actions/todoActions'
+import { fetchAll, deleteCompleted } from 'client/actions/todoActions'
 
-import FilterTodo from '../components/TodoFilterForm'
-import CreateTodo from '../components/TodoCreateForm'
-import Todo from '../components/Todo'
+import FilterTodo from 'client/components/TodoFilterForm'
+import CreateTodo from 'client/components/TodoCreateForm'
+import Todo from 'client/components/Todo'
 
 @connect((store) => {
 	return {

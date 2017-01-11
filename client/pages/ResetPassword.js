@@ -1,5 +1,5 @@
 import React from 'react'
-import ResetPasswordForm from '../components/ResetPasswordForm'
+import ResetPasswordForm from 'client/components/ResetPasswordForm'
 
 export default class ResetPassword extends React.Component {
 

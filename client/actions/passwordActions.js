@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '../store'
-import { PASSWORD } from '../constants/actionKeys'
+import store from 'client/store'
+import { PASSWORD } from 'client/constants/actionKeys'
 
 const baseUrl = '/api/passwords'
 

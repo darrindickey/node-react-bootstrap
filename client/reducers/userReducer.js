@@ -1,4 +1,4 @@
-import { USER } from '../constants/actionKeys'
+import { USER } from 'client/constants/actionKeys'
 
 const handlers = {
 	[`${USER.API_FETCH_ALL}_FULFILLED`]: apiFetchAllHandler,

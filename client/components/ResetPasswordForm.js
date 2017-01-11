@@ -1,5 +1,5 @@
 import React from 'react'
-import { reset } from '../actions/passwordActions'
+import { reset } from 'client/actions/passwordActions'
 
 export default class ResetPassword extends React.Component {
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '../store'
-import { SESSION } from '../constants/actionKeys'
+import store from 'client/store'
+import { SESSION } from 'client/constants/actionKeys'
 
 const baseUrl = '/api/sessions'
 

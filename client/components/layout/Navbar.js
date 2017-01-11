@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout } from '../../actions/sessionActions'
+import { logout } from 'client/actions/sessionActions'
 
 export default class Navbar extends React.Component {
 	

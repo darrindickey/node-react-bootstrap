@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '../store'
-import { TODO } from '../constants/actionKeys'
+import store from 'client/store'
+import { TODO } from 'client/constants/actionKeys'
 
 const baseUrl = '/api/todos'
 

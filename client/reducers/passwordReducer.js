@@ -1,4 +1,4 @@
-import { PASSWORD } from '../constants/actionKeys'
+import { PASSWORD } from 'client/constants/actionKeys'
 
 const handlers = {
 	[`${PASSWORD.API_CHANGE}_FULFILLED`]: apiChangeHandler,

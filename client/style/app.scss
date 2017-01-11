@@ -105,7 +105,26 @@ body {
 }
 
 .bb-footer {
-	flex: 0 0 140px;
+	flex: 0 0 100px;
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 8px;
+
+		li {
+			padding: 4px;
+
+			a {
+				text-decoration: none;
+				color: #666;
+
+				&:hover {
+					text-decoration: underline;	
+				}
+			}
+		}
+	}
 }
 
 .bb-h1 {

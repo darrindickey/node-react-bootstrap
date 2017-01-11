@@ -1,6 +1,7 @@
 import express from 'express'
-import User from '../models/User'
-import { dd } from '../logger'
+
+import User from 'server/models/User'
+import { dd } from 'server/resources/logger'
 
 const UserController = express.Router()
 

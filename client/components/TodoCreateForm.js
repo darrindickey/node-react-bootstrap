@@ -1,5 +1,5 @@
 import React from 'react'
-import { create } from '../actions/todoActions'
+import { create } from 'client/actions/todoActions'
 
 export default class CreateTodo extends React.Component {
 

@@ -1,7 +1,15 @@
 import express from 'express'
-import passport from '../passport'
-import userRepo from '../repositories/UserRepository'
-import { dd } from '../logger'
+import passport from 'server/resources/passport'
+import LoginThrottler from 'server/resources/loginThrottler'
+import userRepo from 'server/repositories/UserRepository'
+
+import authMiddleware from 'server/middlewares/auth'
+import guestMiddleware from 'server/middlewares/guest'
+
+import { HTTP_STATUS } from 'server/constants'
+
+import loginValidator from 'common/validators/loginValidator'
+import signupValidator from 'common/validators/signupValidator'
 
 function getUserData(user) {
 	return {
@@ -13,62 +21,89 @@ function getUserData(user) {
 	}
 }
 
+function getIp(req) {
+	return req.headers['x-forwarded-for'] || req.connection.remoteAddress
+}
+
 const SessionController = express.Router()
 
 // Login
-.post('/', (req, res, next) => {
+.post('/', guestMiddleware, (req, res, next) => { 
+	const { email, password } = req.body
+	const validation = loginValidator({ email, password })
 
-	passport.authenticate('local', function(error, user, info) {
-		if (error) {
-			return res.status(500).send()
-		}
-		
-		if (! user) {
-			return res.status(401).send(info)
-		}
+	if (validation.fails()) {
+		return res.status(HTTP_STATUS.UNPROCESSABLE).send(validation.errors)
+	}
+	
+	const ip = getIp(req)
 
-		userRepo.registerSuccessfulLogin({
-			user: user,
-			ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
-		})
+	const throttler = new LoginThrottler(email, ip)
 
-		// need to do this in order for the session to be set.
-		// i.e serializeUser to be run..
-		req.login(user, (err) => {
-			if (err) {
-				return res.status(500).send()
-			} 
+	throttler.validate().then(() => {
+		passport.authenticate('local', function(error, user, info) {
+			if (error) {
+				return res.status(HTTP_STATUS.SERVER_ERROR).send()
+			}
 			
-			res.send(getUserData(user))
-		})
+			if (user) {
+				userRepo.registerSuccessfulLogin({ user, ip })
 
-	})(req, res, next)
+				return throttler.reset().then(() => {
+					// need to do this in order for the session to be set.
+					// i.e serializeUser to be run..
+					req.login(user, (err) => {
+						if (err) {
+							return res.status(HTTP_STATUS.SERVER_ERROR).send()
+						} 
+						
+						return res.send(getUserData(user))
+					})
+				})
+			}
+			else {
+				return throttler.increment().then(() => {
+					return res.status(HTTP_STATUS.UNPROCESSABLE).send(info)	
+				})
+			}
+		})(req, res, next)
+	}, (err) => {
+		return throttler.getMessage().then((message) => {
+			return res.status(HTTP_STATUS.FORBIDDEN).send({ message })
+		})
+	}) 
 })
 
 // Logout
-.delete('/', (req, res, next) => {
-	if (req.hasOwnProperty('session')) {
-		req.session.destroy((err) => {
-			res.send({message: 'logout success'})
-		})
-	}
-	else {
-		res.send({message: 'logout success'})	
-	}
+.delete('/', authMiddleware, (req, res, next) => {
+	req.session.destroy((err) => {
+		return res.send({message: 'logout success'})
+	})
 })
 
 // Signup
-.post('/signup', (req, res, next) => {
+.post('/signup', guestMiddleware, (req, res, next) => {
 	const { email, firstName, lastName, password } = req.body
+	const validation = signupValidator({ email, firstName, lastName, password })
 
-	userRepo.signup({ email, firstName, lastName, password }).then((user) => {
-		req.login(user, (err) => {
-			if (err) {
-				return res.status(500).send()
-			} 
-			
-			res.send(getUserData(user))
-		})
+	if (validation.fails()) {
+		return res.status(HTTP_STATUS.UNPROCESSABLE).send(validation.errors)
+	}
+
+	userRepo.getByEmail(email).then((user) => {
+		if (user) {
+			return res.status(HTTP_STATUS.CONFLICT).send({message: 'User already exists'})
+		}
+
+		userRepo.signup({ email, firstName, lastName, password }).then((user) => {
+			req.login(user, (err) => {
+				if (err) {
+					return res.status(HTTP_STATUS.SERVER_ERROR).send()
+				} 
+				
+				return res.send(getUserData(user))
+			})
+		}, next)
 	}, next)
 })
 

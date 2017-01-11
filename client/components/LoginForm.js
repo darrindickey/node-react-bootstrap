@@ -1,5 +1,6 @@
 import React from 'react'
-import { login } from '../actions/sessionActions'
+import { Link } from 'react-router'
+import { login } from 'client/actions/sessionActions'
 
 export default class Login extends React.Component {
 
@@ -37,7 +38,11 @@ export default class Login extends React.Component {
 						ref={(input) => this.passwordInput = input} />
 
 					<button type="submit" class="bb-button bb-button--green bb-button--submit">Sign in</button>
+
+					<Link to="/forgot" class="bb-sidebar-list__link" activeClassName="bb-sidebar-list__link--active">Forgot password</Link>
 				</form>
+
+				<a href="/auth/facebook" class="bb-facebook">Facebook login</a>
 			</div>
 		)
 	}

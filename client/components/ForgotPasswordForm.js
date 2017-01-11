@@ -1,5 +1,5 @@
 import React from 'react'
-import { forgot } from '../actions/passwordActions'
+import { forgot } from 'client/actions/passwordActions'
 
 export default class ForgotPassword extends React.Component {
 

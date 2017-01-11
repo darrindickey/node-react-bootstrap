@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
 		table.string('first_name', 100)
 		table.string('last_name', 100)
 		table.string('password', 100)
+		table.string('facebook_id', 100)
 		
 		table.boolean('is_admin').default(false)
 		table.boolean('is_active').default(true)

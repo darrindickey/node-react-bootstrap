@@ -1,4 +1,4 @@
-import { SESSION } from '../constants/actionKeys'
+import { SESSION } from 'client/constants/actionKeys'
 
 const handlers = {
 	[`${SESSION.API_CREATE}_FULFILLED`]: apiLoginHandler,

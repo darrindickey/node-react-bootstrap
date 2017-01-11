@@ -3,15 +3,19 @@ import bodyParser from 'body-parser'
 import favicon from 'serve-favicon'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
-import passport from './passport'
-import { dd } from './logger'
-import { PATHS, APP_KEY } from './constants'
+import redis from 'server/resources/redis'
 
-import UserController from './controllers/UserController'
-import SessionController from './controllers/SessionController'
-import PasswordController from './controllers/PasswordController'
-import TodoController from './controllers/TodoController'
-import DefaultController from './controllers/DefaultController'
+import passport from 'server/resources/passport'
+import { dd } from 'server/resources/logger'
+import { PATHS, APP_KEY } from './constants'
+import { redis as redisConf } from './env'
+
+import UserController from 'server/controllers/UserController'
+import SessionController from 'server/controllers/SessionController'
+import PasswordController from 'server/controllers/PasswordController'
+import TodoController from 'server/controllers/TodoController'
+import FacebookController from 'server/controllers/FacebookController'
+import DefaultController from 'server/controllers/DefaultController'
 
 const PORT = 3000
 
@@ -27,8 +31,8 @@ express()
 
 	.use(session({
 		store: new RedisStore({
-			host: '127.0.0.1',
-			port: 6379
+			host: redisConf.host,
+			port: redisConf.port
 		}),
 		secret: APP_KEY,
 		resave: false,
@@ -38,19 +42,32 @@ express()
 	.use(passport.initialize())
 	.use(passport.session())
 
-
-	.get('/info', (req, res) => {
+	.get('/session', (req, res) => {
 		res.send({
 			session: req.session,
 			isAuthenticated: req.isAuthenticated(),
 		})
 	})
 
+	.get('/redis', (req, res) => {
+		
+		redis.hmsetAsync('foo::bar::baz', {
+			'time': 123,
+			'attempts': 2
+		}).then((status) => {
+			if (status === 'OK') {
+				redis.hgetallAsync('foo::bar::baz').then((result) => {
+					res.send({ data: result })	
+				})
+			}
+		})
+	})
 
 	.use('/api/users', UserController)
 	.use('/api/sessions', SessionController)
 	.use('/api/passwords', PasswordController)
 	.use('/api/todos', TodoController)
+	.use('/auth/facebook', FacebookController)
 	.use(DefaultController)
 	.listen(PORT, () => {
 		dd(`Server running on port ${PORT}`)

@@ -1,5 +1,5 @@
-import db from './db'
 import bookshelf from 'bookshelf'
+import db from 'server/resources/db'
 
 const bookshelfInstance = bookshelf(db)
 

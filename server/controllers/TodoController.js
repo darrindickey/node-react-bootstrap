@@ -1,6 +1,7 @@
 import express from 'express'
-import todoRepo from '../repositories/TodoRepository'
-import { dd } from '../logger'
+
+import todoRepo from 'server/repositories/TodoRepository'
+import { dd } from 'server/resources/logger'
 
 const TodoController = express.Router()
 
